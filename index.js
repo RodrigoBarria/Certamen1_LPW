@@ -3,6 +3,16 @@ import { guardar, obtener, eliminarPaciente, obtenerUno, editarPaciente } from "
 let id = ''
 let editStatus = false
 
+// Función para limpiar los campos del formulario
+function limpiarFormulario() {
+    document.getElementById('nombre').value = ''
+    document.getElementById('apellido').value = ''
+    document.getElementById('especialidad').value = ''
+    document.getElementById('fecha').value = ''
+    document.getElementById('hora').value = ''
+    document.getElementById('nmedico').value = ''
+}
+
 document.getElementById('form').addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -12,7 +22,6 @@ document.getElementById('form').addEventListener('submit', (e) => {
     const fecha = document.getElementById('fecha').value
     const hora = document.getElementById('hora').value
     const nmedico = document.getElementById('nmedico').value
-
 
     if (!editStatus) {
         guardar(nombre, apellido, especialidad, fecha, hora, nmedico)
@@ -27,7 +36,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
         })
         editStatus = false
         id = ''
-        document.getElementById('form').reset()
+        limpiarFormulario() // Limpia los campos del formulario después de editar
     }
 })
 
@@ -97,3 +106,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         })
     })
 })
+
+document.getElementById('btnLimpiar').addEventListener('click', () => {
+    limpiarFormulario();
+});
