@@ -1,0 +1,80 @@
+/* Estilos generales */
+
+/* Establecer el tipo de fuente y tamaño */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #f0f8ff;
+}
+
+/* Establecer el color de fondo y el margen del cuerpo */
+body.container {
+    background-image: linear-gradient(to bottom right, #b7cadd, #56b9c6); /* Degradado de azul a tonalidad de blanco */
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Establecer el ancho máximo del formulario */
+form#form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Estilos del encabezado */
+header {
+    background-image: linear-gradient(to bottom right, #0061c8, #bfe4e9); /* Degradado de azul a tonalidad de blanco */
+    color: #fff;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+/* Estilos del título del encabezado */
+header h1 {
+    margin: 0;
+    padding: 1rem;
+}
+
+/* Estilos de los campos de entrada del formulario */
+.form-control {
+    border-radius: 0.5rem;
+    width: 100%; /* Duplica el tamaño de la tabla */
+    height: 25px;
+    border-radius: 10px; /* Aplica bordes redondeados a la tabla */
+}
+
+/* Estilos de los botones del formulario */
+input[type="button"],
+input[type="submit"] {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center; /* Agrega esta línea para centrar los botones */
+}
+
+/* Estilos de la tabla de lista de atenciones médicas */
+table.table-bordered {
+    margin-top: 2rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+/* Estilos de las celdas de encabezado de la tabla */
+thead.bg-success th {
+    background-image: linear-gradient(to bottom right, #0061c8, #bfe4e9); /* Degradado de azul a tonalidad de blanco */
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+/* Estilos de las celdas del cuerpo de la tabla */
+tbody td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Estilos de las acciones en la tabla */
+td.actions {
+    text-align: center;
+}
