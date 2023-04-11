@@ -24,8 +24,19 @@ document.getElementById('form').addEventListener('submit', (e) => {
     const nmedico = document.getElementById('nmedico').value
 
     if (!editStatus) {
+        //Verificación de campos vacíos
+        if (nombre === '' || apellido === '' || especialidad === '' || fecha === '' || hora === '' || nmedico === '') {
+        // Muestra un mensaje de error o realiza alguna acción adicional para manejar los campos vacíos
+        alert('Por favor, completa todos los campos del formulario');
+        return; // Detén la ejecución del bloque de código si hay campos vacíos
+    }
         guardar(nombre, apellido, especialidad, fecha, hora, nmedico)
     } else {
+        //Verificación de campos vacíos
+        if (nombre === '' || apellido === '' || especialidad === '' || fecha === '' || hora === '' || nmedico === '') {
+        alert('Por favor, completa todos los campos del formulario');
+        return; // STOP ejecución del bloque de código si hay campos vacíos
+        }
         editarPaciente(id, {
             'nombre': nombre,
             'apellido': apellido,
@@ -36,6 +47,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
         })
         editStatus = false
         id = ''
+        Swal.fire('Registro Modificado!')
         limpiarFormulario() // Limpia los campos del formulario después de editar
     }
 })
@@ -73,8 +85,8 @@ window.addEventListener('DOMContentLoaded', async () => {
                     showCancelButton: true,
                     cancelButtonText: 'No',
                     confirmButtonText: 'Eliminar!',
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
                 }).then((result) => {
                     if (result.isConfirmed) {
                         eliminarPaciente(e.target.id)
@@ -92,7 +104,19 @@ window.addEventListener('DOMContentLoaded', async () => {
             btn.addEventListener('click', async (e) => {
                 const documento = await obtenerUno(e.target.id)
                 const reg = documento.data()
-
+                Swal.fire({
+                    title: 'Desea Editar el Registro??',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Si',
+                    denyButtonText: `No`,
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                      Swal.fire('Se han cargado los datos para modificar')
+                    } else if (result.isDenied) {
+                      Swal.fire('Los cambios no se han guardado')
+                    }                
                 document.getElementById('nombre').value = reg.nombre
                 document.getElementById('apellido').value = reg.apellido
                 document.getElementById('especialidad').value = reg.especialidad
@@ -106,7 +130,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         })
     })
 })
-
+})
 document.getElementById('btnLimpiar').addEventListener('click', () => {
     limpiarFormulario();
 });
